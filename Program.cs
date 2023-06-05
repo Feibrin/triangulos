@@ -3,54 +3,53 @@ using System.Globalization;
 
 namespace Course
 {
+    public class Triangulo
+    {
+        public double A { get; set; }
+        public double B { get; set; }
+        public double C { get; set; }
+
+        public double CalcularArea()
+        {
+            double p = (A + B + C) / 2.0;
+            double area = Math.Sqrt(p * (p - A) * (p - B) * (p - C));
+            return area;
+        }
+    }
 
     public class Program
     {
-
         public static void Main(string[] args)
         {
+            Triangulo x = LerTriangulo("X");
+            Triangulo y = LerTriangulo("Y");
 
-            double[] medidaX = LerMedidasTriangulo("X");
-            double[] medidaY = LerMedidasTriangulo("Y");
+            double areaX = x.CalcularArea();
+            double areaY = y.CalcularArea();
 
-            double areaX = CalcularAreaTriangulo(medidaX);
-            double areaY = CalcularAreaTriangulo(medidaY);
-
-            Console.WriteLine("Área de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
-            Console.WriteLine("Área de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Area de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
+            Console.WriteLine("Area de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
 
             if (areaX > areaY)
             {
-                Console.WriteLine("Maior área: X");
+                Console.WriteLine("Maior Area: X");
             }
             else
             {
-                Console.WriteLine("Maior área: Y");
+                Console.WriteLine("Maior Area: Y");
             }
         }
-        public static double[] LerMedidasTriangulo(string nomeTriangulo)
+
+        public static Triangulo LerTriangulo(string nomeTriangulo)
         {
-            double[] medidas = new double[3];
+            Triangulo triangulo = new Triangulo();
 
-            Console.WriteLine("Entre com as medidas do triângulo " + nomeTriangulo + ":");
-            for (int i = 0; i < 3; i++)
-            {
-                medidas[i] = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            }
+            Console.WriteLine("Entre com as medidas do triangulo " + nomeTriangulo + ":");
+            triangulo.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            triangulo.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+            triangulo.C = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-            return medidas;
-        }
-
-        public static double CalcularAreaTriangulo(double[] medidas)
-        {
-            double a = medidas[0];
-            double b = medidas[1];
-            double c = medidas[2];
-
-            double p = (a + b + c) / 2.0;
-            double area = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
-
-            return area;
+            return triangulo;
         }
     }
 }
