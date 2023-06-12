@@ -1,14 +1,16 @@
-﻿using System;
+// Fabrício Nogueira Santos - 11/06/23
+using System;
 using System.Globalization;
 
 namespace Course
 {
     public class Triangulo
     {
+// Recebe variáveis      
         public double A { get; set; }
         public double B { get; set; }
         public double C { get; set; }
-
+// Função calcular área
         public double CalcularArea()
         {
             double p = (A + B + C) / 2.0;
@@ -29,7 +31,7 @@ namespace Course
 
             Console.WriteLine("Area de X = " + areaX.ToString("F4", CultureInfo.InvariantCulture));
             Console.WriteLine("Area de Y = " + areaY.ToString("F4", CultureInfo.InvariantCulture));
-
+// Verifica maior área
             if (areaX > areaY)
             {
                 Console.WriteLine("Maior Area: X");
@@ -39,11 +41,11 @@ namespace Course
                 Console.WriteLine("Maior Area: Y");
             }
         }
-
+// Recebe triângulo
         public static Triangulo LerTriangulo(string nomeTriangulo)
         {
             Triangulo triangulo = new Triangulo();
-
+// Colocar as medidas
             Console.WriteLine("Entre com as medidas do triangulo " + nomeTriangulo + ":");
             triangulo.A = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
             triangulo.B = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
